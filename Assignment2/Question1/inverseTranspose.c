@@ -1,23 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
 int n = 5;
 int a = 3, b = 2;
-void getnab()
-{
-    printf("Enter n\n");
-    scanf("%d", &n);
-    printf("Enter a\n");
-    scanf("%d", &a);
-    printf("Enter b\n");
-    scanf("%d", &b);
-}
+/**
+ *@brief find size of given array
+ *@param char* input
+ *@return size
+ */
 int getsize(char *input)
 {
     int size = strlen(input);
     return size;
 }
-
+/**
+ *@brief create J for given n,a,b
+ *@param int input[1000]
+ *@param int size
+ *@return void
+ */
 void createInputJ(int inputJ[1000], int size)
 {
     for (int i = 0; i < size; i++)
@@ -25,7 +28,14 @@ void createInputJ(int inputJ[1000], int size)
         inputJ[i] = (a * i + b) % n;
     }
 }
-
+/**
+ *@brief decrypt the code
+ *@param char* output
+ *@param char* input
+ *@param int inputJ[1000]
+ *@param int size
+ *@return void
+ */
 void createOutput(char *output, char *input, int inputJ[1000], int size)
 {
     int patch = -n;
@@ -46,9 +56,15 @@ void createOutput(char *output, char *input, int inputJ[1000], int size)
     FILE *stream = fopen("decryptOutput.txt", "w");
     fprintf(stream, "%s\n", output);
 }
-
+/**
+ *@brief main method of program
+ */
 int main(int argc, char const *argv[])
 {
+    clock_t start, end;
+    double cpu_time_used;
+
+    start = clock();
 
     if (argc != 4)
     {
@@ -80,7 +96,9 @@ int main(int argc, char const *argv[])
         createOutput(output, input, inputJ, size);
 
         printf("DONE!\n");
-
+        end = clock();
+        cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+        printf("cpu time used is %f\n", cpu_time_used);
         return 0;
     }
 }

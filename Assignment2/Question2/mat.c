@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
+
 
 int n;
 int height;
 int dataOutput = 1;
-
+/**
+ * @brief node for tree
+ */
 struct node
 {
     int data;
@@ -14,6 +18,11 @@ struct node
     struct node *third;
     struct node *fourth;
 };
+/**
+ * @brief find power a raise to b
+ * @param int a
+ * @param int b
+ */
 int power(int a, int b)
 {
     if (b == 0)
@@ -27,6 +36,10 @@ int power(int a, int b)
     }
     return a;
 }
+/**
+ * @brief for making new node
+ * @return newNode
+ */
 struct node *newNode()
 {
 
@@ -40,6 +53,11 @@ struct node *newNode()
 
     return (node);
 }
+/**
+ * @brief find level of tree for given number of element
+ * @param int n
+ * @return int height
+ */
 int findlevel(int n)
 {
     if (n == 1)
@@ -54,7 +72,15 @@ int findlevel(int n)
     }
     return count;
 }
-
+/**
+ * @brief for making next four nodes of a node
+ * @param node *input
+ * @param int level
+ * @param int r
+ * @param int c
+ * @param int data[n][n]
+ * @return node with its next level node
+ */
 struct node *nextLevel(struct node *input, int level, int r, int c, int data[n][n])
 {
     //leaf
@@ -90,6 +116,12 @@ struct node *nextLevel(struct node *input, int level, int r, int c, int data[n][
     }
     return input;
 }
+/**
+ * @brief give values to non leaf node by looking at its leaf values
+ * @param node **input
+ * @param int level
+ * @return value of that non leaf node
+ */
 int merge(struct node **input, int level)
 {
     if (level == 1)
@@ -121,7 +153,16 @@ int merge(struct node **input, int level)
         }
     }
 }
-
+/**
+ * @brief give value to output array by using the given tree
+ * @param node *input
+ * @param int arr[n][n]
+ * @param int level
+ * @param int r
+ * @param int c
+ * @param int data[n][n]
+ * @return void
+ */
 void output(struct node *input, int arr[n][n], int level, int r, int c, int data[n][n])
 {
     int diff;
@@ -162,7 +203,11 @@ void output(struct node *input, int arr[n][n], int level, int r, int c, int data
         }
     }
 }
-
+/**
+ * @brief find power of two which is next to given number
+ * @param int n
+ * @return int nextPowOfTwo
+ */
 int next_pow_2(int n)
 {
     if (!(n & (n - 1)))
@@ -197,6 +242,12 @@ struct node *modifyTree(struct node *input)
 
     return input;
 }
+/**
+ * @brief to print postorder of a tree
+ * @param node* input
+ * @param int level
+ * @return void
+ */
 void printPostOrder(struct node *input, int level)
 {
     if (input->data == -1)
@@ -212,9 +263,16 @@ void printPostOrder(struct node *input, int level)
         dataOutput++;
     }
 }
+/**
+ * @brief main method of program
+ */
 int main()
 
 {
+    clock_t start, end;
+    double cpu_time_used;
+
+    start = clock();
     char *filename = "input1.txt";
 
     FILE *f = fopen(filename, "r");
@@ -296,6 +354,10 @@ int main()
 
     dataOutput = 1;
     printPostOrder(head, 0);
+
+    end = clock();
+    cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+    printf("cpu time used is %f\n", cpu_time_used);
 
     return 0;
 }

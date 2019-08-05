@@ -1,25 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
 int n = 5;
 int a = 3, b = 2;
 
-void getnab()
-{
-	printf("Enter n\n");
-	scanf("%d", &n);
-	printf("Enter a\n");
-	scanf("%d", &a);
-	printf("Enter b\n");
-	scanf("%d", &b);
-}
-
+/**
+ *@brief return size of given input array
+ *@param char *input
+ *@return size
+ */
 int getsize(char *input)
 {
 	int size = strlen(input);
 	return size;
 }
-
+/**
+ *@brief create J for given a,n,b
+ *@param int outputJ[1000]
+ *@param int size
+ *@return void
+ */
 void createOutputJ(int outputJ[1000], int size)
 {
 	for (int i = 0; i < size; i++)
@@ -27,7 +29,14 @@ void createOutputJ(int outputJ[1000], int size)
 		outputJ[i] = ((a * i) + b) % n;
 	}
 }
-
+/**
+ *@brief create output array with encryption
+ *@param char *input
+ *@param char *output
+ *@param int outputJ[1000]
+ *@param int size
+ *return void
+ */
 void createOutput(char *input, char *output, int outputJ[1000], int size)
 {
 	int patch = -n;
@@ -44,6 +53,11 @@ void createOutput(char *input, char *output, int outputJ[1000], int size)
 	FILE *stream = fopen("output.txt", "w");
 	fprintf(stream, "%s\n", output);
 }
+/**
+ *@brief make string size multiple of n by adding extra char
+ *@param char *input
+ *@return void
+ */
 void extend(char *input)
 {
 
@@ -59,9 +73,15 @@ void extend(char *input)
 		strcat(input, add);
 	}
 }
-
+/**
+ *@brief main method of program
+ */
 int main(int argc, char const *argv[])
 {
+	clock_t start, end;
+	double cpu_time_used;
+
+	start = clock();
 
 	if (argc != 5)
 	{
@@ -73,7 +93,7 @@ int main(int argc, char const *argv[])
 		n = atoi(argv[1]);
 		a = atoi(argv[2]);
 		b = atoi(argv[3]);
-		const char* filename = argv[4];
+		const char *filename = argv[4];
 
 		char input[1000] = "";
 
@@ -97,6 +117,9 @@ int main(int argc, char const *argv[])
 		createOutput(input, output, outputJ, size);
 
 		printf("DONE!\n");
+		end = clock();
+		cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+		printf("cpu time used is %f\n", cpu_time_used);
 
 		return 0;
 	}
