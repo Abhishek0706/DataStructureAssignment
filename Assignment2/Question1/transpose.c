@@ -73,6 +73,33 @@ void extend(char *input)
 		strcat(input, add);
 	}
 }
+
+void decKey(int n, int a, int b)
+{
+	int _a = 0;
+	int _b = 0;
+
+	while ((1 - (a * _a)) % n != 0)
+	{
+		_a++;
+	}
+	while ((_a * b + _b) % n != 0)
+	{
+		_b++;
+	}
+	printf("decryption key is n=%d, a'=%d, b'= %d\n", n, _a, _b);
+}
+int gcd(int n1, int n2)
+{
+	int g;
+	for (int i = 1; i <= n1 && i <= n2; ++i)
+	{
+		if (n1 % i == 0 && n2 % i == 0)
+			g = i;
+	}
+	return g;
+}
+
 /**
  *@brief main method of program
  */
@@ -85,7 +112,7 @@ int main(int argc, char const *argv[])
 
 	if (argc != 5)
 	{
-		printf("error: number of args should be 4");
+		printf("error: number of args should be 4\n");
 		return 1;
 	}
 	else
@@ -95,6 +122,10 @@ int main(int argc, char const *argv[])
 		b = atoi(argv[3]);
 		const char *filename = argv[4];
 
+		if(gcd(n,a)!=1){
+			printf("n and a must be coprime\n");
+			return 1;
+		}
 		char input[1000] = "";
 
 		FILE *stream = fopen(filename, "r");
@@ -117,6 +148,8 @@ int main(int argc, char const *argv[])
 		createOutput(input, output, outputJ, size);
 
 		printf("DONE!\n");
+		decKey(n, a, b);
+
 		end = clock();
 		cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
 		printf("cpu time used is %f\n", cpu_time_used);

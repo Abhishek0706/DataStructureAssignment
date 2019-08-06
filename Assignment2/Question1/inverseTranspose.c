@@ -4,7 +4,7 @@
 #include <time.h>
 
 int n = 5;
-int a = 3, b = 2;
+int a = 2, b = 1;
 /**
  *@brief find size of given array
  *@param char* input
@@ -45,10 +45,10 @@ void createOutput(char *output, char *input, int inputJ[1000], int size)
         {
             patch += n;
         }
-        output[inputJ[i] + patch] = input[i];
-        if (output[inputJ[i] + patch] == '*')
+        output[i] = input[inputJ[i] + patch];
+        if (output[i] == '*')
         {
-            output[inputJ[i] + patch] = '\0';
+            output[i] = '\0';
         }
     }
     output[size] = '\0';
@@ -66,9 +66,9 @@ int main(int argc, char const *argv[])
 
     start = clock();
 
-    if (argc != 4)
+    if (argc != 5)
     {
-        printf("error: number of args should be 3");
+        printf("error: number of args should be 4\n");
         return 1;
     }
     else
@@ -76,12 +76,13 @@ int main(int argc, char const *argv[])
         n = atoi(argv[1]);
         a = atoi(argv[2]);
         b = atoi(argv[3]);
+        const char* filename = argv[4];
         char input[1000] = "";
         int outputI[1000];
         int inputJ[1000];
         char output[1000];
 
-        FILE *stream = fopen("output.txt", "r");
+        FILE *stream = fopen(filename, "r");
 
         char temp[1000];
         while (fgets(temp, 1000, stream))
