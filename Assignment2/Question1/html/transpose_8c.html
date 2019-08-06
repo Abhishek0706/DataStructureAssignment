@@ -96,6 +96,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a126e3a2521846c6753e5680f4d65409e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="transpose_8c.html#a126e3a2521846c6753e5680f4d65409e">extend</a> (char *input)</td></tr>
 <tr class="memdesc:a126e3a2521846c6753e5680f4d65409e"><td class="mdescLeft">&#160;</td><td class="mdescRight">make string size multiple of n by adding extra char  <a href="#a126e3a2521846c6753e5680f4d65409e">More...</a><br /></td></tr>
 <tr class="separator:a126e3a2521846c6753e5680f4d65409e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a4bcb6abf538235d3e42b5edffec79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="transpose_8c.html#a04a4bcb6abf538235d3e42b5edffec79">decKey</a> (int <a class="el" href="transpose_8c.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>, int <a class="el" href="transpose_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, int <a class="el" href="transpose_8c.html#a148e3876077787926724625411d6e7a9">b</a>)</td></tr>
+<tr class="memdesc:a04a4bcb6abf538235d3e42b5edffec79"><td class="mdescLeft">&#160;</td><td class="mdescRight">find decryption key for given encryption key  <a href="#a04a4bcb6abf538235d3e42b5edffec79">More...</a><br /></td></tr>
+<tr class="separator:a04a4bcb6abf538235d3e42b5edffec79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7a6083415b57bb05cc3457399abc58"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="transpose_8c.html#acc7a6083415b57bb05cc3457399abc58">gcd</a> (int n1, int n2)</td></tr>
+<tr class="memdesc:acc7a6083415b57bb05cc3457399abc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">find gcd of two number  <a href="#acc7a6083415b57bb05cc3457399abc58">More...</a><br /></td></tr>
+<tr class="separator:acc7a6083415b57bb05cc3457399abc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf9e6b7e6f15df4b525a2e7705ba3089"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="transpose_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089">main</a> (int argc, char const *argv[])</td></tr>
 <tr class="memdesc:abf9e6b7e6f15df4b525a2e7705ba3089"><td class="mdescLeft">&#160;</td><td class="mdescRight">main method of program  <a href="#abf9e6b7e6f15df4b525a2e7705ba3089">More...</a><br /></td></tr>
 <tr class="separator:abf9e6b7e6f15df4b525a2e7705ba3089"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,6 +205,50 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a04a4bcb6abf538235d3e42b5edffec79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a4bcb6abf538235d3e42b5edffec79">&#9670;&nbsp;</a></span>decKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void decKey </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>find decryption key for given encryption key </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>n </td></tr>
+    <tr><td class="paramname">int</td><td>a </td></tr>
+    <tr><td class="paramname">int</td><td>b </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a126e3a2521846c6753e5680f4d65409e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a126e3a2521846c6753e5680f4d65409e">&#9670;&nbsp;</a></span>extend()</h2>
 
@@ -223,6 +273,44 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="acc7a6083415b57bb05cc3457399abc58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7a6083415b57bb05cc3457399abc58">&#9670;&nbsp;</a></span>gcd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gcd </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>find gcd of two number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>n1 </td></tr>
+    <tr><td class="paramname">int</td><td>n2 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int gcd </dd></dl>
 
 </div>
 </div>

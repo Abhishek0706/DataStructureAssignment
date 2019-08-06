@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getsize',['getsize',['../inverse_transpose_8c.html#a5d56310586b574a88229fb18b08e33a9',1,'getsize(char *input):&#160;inverseTranspose.c'],['../transpose_8c.html#a5d56310586b574a88229fb18b08e33a9',1,'getsize(char *input):&#160;transpose.c']]]
+  ['extend',['extend',['../transpose_8c.html#a126e3a2521846c6753e5680f4d65409e',1,'transpose.c']]]
 ];

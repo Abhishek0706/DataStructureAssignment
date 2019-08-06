@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main',['main',['../compare_files_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;compareFiles.c'],['../inverse_transpose_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089',1,'main(int argc, char const *argv[]):&#160;inverseTranspose.c'],['../transpose_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089',1,'main(int argc, char const *argv[]):&#160;transpose.c']]]
+  ['gcd',['gcd',['../transpose_8c.html#acc7a6083415b57bb05cc3457399abc58',1,'transpose.c']]],
+  ['getsize',['getsize',['../inverse_transpose_8c.html#a5d56310586b574a88229fb18b08e33a9',1,'getsize(char *input):&#160;inverseTranspose.c'],['../transpose_8c.html#a5d56310586b574a88229fb18b08e33a9',1,'getsize(char *input):&#160;transpose.c']]]
 ];

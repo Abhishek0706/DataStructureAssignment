@@ -73,6 +73,12 @@ void extend(char *input)
 		strcat(input, add);
 	}
 }
+/**
+ * @brief find decryption key for given encryption key
+ * @param int n
+ * @param int a
+ * @param int b
+ */
 
 void decKey(int n, int a, int b)
 {
@@ -89,6 +95,12 @@ void decKey(int n, int a, int b)
 	}
 	printf("decryption key is n=%d, a'=%d, b'= %d\n", n, _a, _b);
 }
+/**
+ * @brief find gcd of two number
+ * @param int n1
+ * @param int n2
+ * @return int gcd
+ */
 int gcd(int n1, int n2)
 {
 	int g;
