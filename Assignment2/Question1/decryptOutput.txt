@@ -1,2 +1,1 @@
-Slpmaeset tsac esc
-2n162-
+Sample test case
