@@ -108,7 +108,34 @@ void bstPath(bstNode* node) {
 	s.pop();
 
 }
+int nodeHeight(bstNode *n) {
+	int a, b;
+	if (n == NULL) {
+		return -1;
+	}
+	else {
+		a = nodeHeight(n->left);
+		b = nodeHeight(n->right);
+		if (a > b) {
+			return a + 1;
+		}
+		else {
+			return b + 1;
+		}
+	}
+}
+void levelWiseBst(bstNode *node, int tab) {
+	if (node == NULL) {
+		return ;
+	}
+	for (int i = 0; i < tab; i++) {
+		cout << "\t";
 
+	}
+	cout << node->data << "[" << nodeHeight(node) << "]" << endl;
+	levelWiseBst(node->left, tab + 1);
+	levelWiseBst(node->right, tab + 1);
+}
 // avl tree
 
 
@@ -271,6 +298,20 @@ void avlPath(avlNode* node) {
 	avlPath(node->right);
 	s.pop();
 
+}
+void levelWiseAvl(avlNode *node, int tab) {
+	if (node == NULL) {
+		return ;
+	}
+	for (int i = 0; i < tab; i++) {
+		cout << "\t";
+
+	}
+	int a = getBalance(node);
+	if (a < 0) a = a * (-1);
+	cout << node->data << "[" << a << "]" << endl;
+	levelWiseAvl(node->left, tab + 1);
+	levelWiseAvl(node->right, tab + 1);
 }
 
 //red black tree
@@ -474,6 +515,52 @@ void rbPath(rbNode* node) {
 
 }
 
+int rbNodeHeight(rbNode *n) {
+	int a, b;
+	if (n == NULL) {
+		return -1;
+	}
+	else {
+		a = rbNodeHeight(n->left);
+		b = rbNodeHeight(n->right);
+		if (a > b) {
+			return a + 1;
+		}
+		else {
+			return b + 1;
+		}
+	}
+}
+int RbgetBalance(rbNode *N)
+{
+	if (N == NULL)
+		return 0;
+	return rbNodeHeight(N->left) - rbNodeHeight(N->right);
+}
+
+void levelWiseRb(rbNode *node, int tab) {
+	if (node == NULL) {
+		return ;
+	}
+	for (int i = 0; i < tab; i++) {
+		cout << "\t";
+
+	}
+	char c;
+	int a = RbgetBalance(node);
+	if (a < 0) {
+		a = a * (-1);
+	}
+	if (node->color == 0) {
+		c = 'r';
+	}
+	else {
+		c = 'b';
+	}
+	cout << node->data << "[" << a << "]" << "[" << c << "]" << endl;
+	levelWiseRb(node->left, tab + 1);
+	levelWiseRb(node->right, tab + 1);
+}
 
 int main() {
 
@@ -508,6 +595,9 @@ int main() {
 			else {
 				cout << "give a valid input\n";
 			}
+			// cin >> data;
+			// bstHead = bstInsert(bstHead, data);
+			// rbInsert(data);
 
 
 		}
@@ -555,7 +645,7 @@ int main() {
 
 			}
 			else {
-				cout<<"give a valid input\n";
+				cout << "give a valid input\n";
 			}
 
 		}
@@ -565,16 +655,16 @@ int main() {
 			printf("\t3. level-wise indentation of red-black tree\n");
 			cin >> task2;
 			if (task2 == 1) {
-
+				levelWiseBst(bstHead, 0);
 			}
 			else if (task2 == 2) {
-
+				levelWiseAvl(avlHead, 0);
 			}
 			else if (task2 == 3) {
-
+				levelWiseRb(rbHead, 0);
 			}
 			else {
-
+				cout << "give a valid input" << endl;
 			}
 
 		}
