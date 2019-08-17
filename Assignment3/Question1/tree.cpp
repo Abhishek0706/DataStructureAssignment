@@ -579,25 +579,25 @@ int main() {
 		cin >> task;
 
 		if (task == 1) {
-			printf("\t1. insert in BST\n");
-			printf("\t2. insert in red-black Tree\n");
-			cin >> task2;
+			// printf("\t1. insert in BST\n");
+			// printf("\t2. insert in red-black Tree\n");
+			// cin >> task2;
 
-			if (task2 == 1) {
-				cin >> data;
-				bstHead = bstInsert(bstHead, data);
+			// if (task2 == 1) {
+			// 	cin >> data;
+			// 	bstHead = bstInsert(bstHead, data);
 
-			}
-			else if (task2 == 2) {
-				cin >> data;
-				rbInsert(data);
-			}
-			else {
-				cout << "give a valid input\n";
-			}
-			// cin >> data;
-			// bstHead = bstInsert(bstHead, data);
-			// rbInsert(data);
+			// }
+			// else if (task2 == 2) {
+			// 	cin >> data;
+			// 	rbInsert(data);
+			// }
+			// else {
+			// 	cout << "give a valid input\n";
+			// }
+			cin >> data;
+			bstHead = bstInsert(bstHead, data);
+			rbInsert(data);
 
 
 		}
