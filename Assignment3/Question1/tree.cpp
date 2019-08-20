@@ -1,17 +1,23 @@
 #include <iostream>
 #include <stack>
+#include <time.h>
 using namespace std;
 
 //binary search tree
 stack <int> s;
 
+/**
+ * @brief class for bst node
+ */
 class bstNode {
 public:
 	int data;
 	bstNode *left;
 	bstNode *right;
 };
-
+/**
+ * @brief method to make new bst node
+ */
 bstNode* newbstNode(int data)
 {
 	bstNode* node = new bstNode();
@@ -21,7 +27,9 @@ bstNode* newbstNode(int data)
 
 	return (node);
 }
-
+/**
+ * @brief insert a bst node into bst
+ */
 bstNode* bstInsert(bstNode *node, int data) {
 	if (node == NULL) {
 		node = newbstNode(data);
@@ -37,7 +45,9 @@ bstNode* bstInsert(bstNode *node, int data) {
 	}
 	return (node);
 }
-
+/**
+ * @brief print inorder of given bst 
+ */
 void bstInOrder(bstNode *root)
 {
 	if (root != NULL)
@@ -48,6 +58,9 @@ void bstInOrder(bstNode *root)
 		bstInOrder(root->right);
 	}
 }
+/**
+ * @brief print the given stack
+ */
 void stackPrint(stack<int> s) {
 	//input stact for root to 1 leaf
 	if (s.empty()) {
@@ -77,7 +90,9 @@ void stackPrint(stack<int> s) {
 	s.push(x);
 
 }
-
+/**
+ * @brief make a stack opposite to given stack
+ */
 void OppStack(stack<int> s) {
 	if (s.empty()) {
 		return;
@@ -93,7 +108,9 @@ void OppStack(stack<int> s) {
 	stackPrint(s1);
 }
 
-
+/**
+ * @brief print path in a bst
+ */
 void bstPath(bstNode* node) {
 	if (node == NULL) {
 		return;
@@ -101,13 +118,16 @@ void bstPath(bstNode* node) {
 	s.push(node->data);
 	bstPath(node->left);
 	if (node->left == NULL && node->right == NULL) {
-		OppStack(s);
+		OppStack(s); //stack of a  leaf to root
 		printf("\n");
 	}
 	bstPath(node->right);
 	s.pop();
 
 }
+/**
+ * @brief find height of a given node
+ */
 int nodeHeight(bstNode *n) {
 	int a, b;
 	if (n == NULL) {
@@ -124,6 +144,27 @@ int nodeHeight(bstNode *n) {
 		}
 	}
 }
+/**
+ * @brief return balance factor of given bst node
+ */
+int bstgetBalance(bstNode *N)
+{
+	if (N == NULL)
+		return 0;
+	return nodeHeight(N->left) - nodeHeight(N->right);
+}
+/**
+ * @brief return 1 if the given node is leaf otherwise 0
+ */
+int isBstLeaf(bstNode *n) {
+	if (n->right == NULL && n->left == NULL) {
+		return 1;
+	}
+	return 0;
+}
+/**
+ * @brief print level wise intendent of bst
+ */
 void levelWiseBst(bstNode *node, int tab) {
 	if (node == NULL) {
 		return ;
@@ -132,13 +173,23 @@ void levelWiseBst(bstNode *node, int tab) {
 		cout << "\t";
 
 	}
-	cout << node->data << "[" << nodeHeight(node) << "]" << endl;
+	int a = bstgetBalance(node) ;
+	if (a < 0) a *= (-1);
+	if (isBstLeaf(node) == 1) {
+		cout << node->data << endl;
+	}
+	else {
+		cout << node->data << "[" << a << "]" << endl;
+	}
+
 	levelWiseBst(node->left, tab + 1);
 	levelWiseBst(node->right, tab + 1);
 }
 // avl tree
 
-
+/**
+ * @brief class for avl node
+ */
 class avlNode
 {
 public:
@@ -147,19 +198,25 @@ public:
 	avlNode *right;
 	int height;
 };
-
+/**
+ * @brief return max of two number
+ */
 int max(int a, int b)
 {
 	return (a > b) ? a : b;
 }
-
+/**
+ * @brief return height of avl node
+ */
 int height(avlNode *N)
 {
 	if (N == NULL)
 		return 0;
 	return N->height;
 }
-
+/**
+ * @brief create new avl node
+ */
 avlNode* newavlNode(int data)
 {
 	avlNode* node = new avlNode();
@@ -170,7 +227,9 @@ avlNode* newavlNode(int data)
 
 	return (node);
 }
-
+/**
+ * @brief right rotation method in avl tree
+ */
 avlNode *rightRotate(avlNode *y)
 {
 	avlNode *x = y->left;
@@ -189,7 +248,9 @@ avlNode *rightRotate(avlNode *y)
 
 	return x;
 }
-
+/**
+ * @brief left rotation method in avl tree
+ */
 avlNode *leftRotate(avlNode *x)
 {
 	avlNode *y = x->right;
@@ -208,14 +269,18 @@ avlNode *leftRotate(avlNode *x)
 
 	return y;
 }
-
+/**
+ * @brief return balance factor of given avl node
+ */
 int getBalance(avlNode *N)
 {
 	if (N == NULL)
 		return 0;
 	return height(N->left) - height(N->right);
 }
-
+/**
+ * @brief insert new node in given avl tree
+ */
 avlNode* avlInsert(avlNode* node, int data)
 {
 
@@ -258,7 +323,9 @@ avlNode* avlInsert(avlNode* node, int data)
 	return node;
 }
 
-
+/**
+ * @brief print inorder of given avl tree 
+ */
 void avlInOrder(avlNode *root)
 {
 
@@ -271,7 +338,9 @@ void avlInOrder(avlNode *root)
 	}
 }
 
-
+/**
+ * @brief create avl tree from given bst tree
+ */
 avlNode* createAVL(bstNode *b, avlNode *a) {
 	if (b == NULL) {
 		return a;
@@ -284,7 +353,9 @@ avlNode* createAVL(bstNode *b, avlNode *a) {
 	return a;
 
 }
-
+/**
+ * @brief print all paths in given avl tree
+ */
 void avlPath(avlNode* node) {
 	if (node == NULL) {
 		return;
@@ -299,6 +370,18 @@ void avlPath(avlNode* node) {
 	s.pop();
 
 }
+/**
+ * @brief return 1 if given node is a leaf
+ */
+int isAvlLeaf(avlNode *n) {
+	if (n->right == NULL && n->left == NULL) {
+		return 1;
+	}
+	return 0;
+}
+/**
+ * @brief print level wise indentent of given avl tree
+ */
 void levelWiseAvl(avlNode *node, int tab) {
 	if (node == NULL) {
 		return ;
@@ -309,12 +392,20 @@ void levelWiseAvl(avlNode *node, int tab) {
 	}
 	int a = getBalance(node);
 	if (a < 0) a = a * (-1);
-	cout << node->data << "[" << a << "]" << endl;
+	if (isAvlLeaf(node) == 1) {
+		cout << node->data << endl;
+	}
+	else {
+		cout << node->data << "[" << a << "]" << endl;
+	}
+
 	levelWiseAvl(node->left, tab + 1);
 	levelWiseAvl(node->right, tab + 1);
 }
 
-//red black tree
+/**
+ * @brief class for red black node
+ */
 class rbNode
 {
 public:
@@ -326,7 +417,9 @@ public:
 
 };
 rbNode* rbHead = NULL;
-
+/**
+ * @brief create new node of red black tree
+ */
 rbNode* newrbNode(int data) {
 	rbNode* node = new rbNode();
 	node->data = data;
@@ -338,7 +431,9 @@ rbNode* newrbNode(int data) {
 	return (node);
 
 }
-
+/**
+ * @brief left rotate method for red black tree
+ */
 void leftrotate(rbNode *p)
 {
 	if (p->right == NULL)
@@ -368,6 +463,9 @@ void leftrotate(rbNode *p)
 		p->parent = y;
 	}
 }
+/**
+ * @brief right rotate method for red black tree
+ */
 void rightrotate(rbNode *p)
 {
 	if (p->left == NULL)
@@ -397,7 +495,9 @@ void rightrotate(rbNode *p)
 		p->parent = y;
 	}
 }
-
+/**
+ * @brief making rotation in red black tree after inserting new node
+ */
 void insertfix(rbNode* t) {
 	if (rbHead == t) {
 		t->color = 1;
@@ -456,7 +556,9 @@ void insertfix(rbNode* t) {
 	}
 
 }
-
+/**
+ * @brief insert new node in given red black tree
+ */
 void rbInsert(int data) {
 
 	rbNode* p;
@@ -488,6 +590,9 @@ void rbInsert(int data) {
 	insertfix(t);
 
 }
+/**
+ * @brief print inOrder of given red black tree
+ */
 void rbInOrder(rbNode *root)
 {
 
@@ -499,7 +604,9 @@ void rbInOrder(rbNode *root)
 		rbInOrder(root->right);
 	}
 }
-
+/**
+ * @brief print all paths in given red black tree
+ */
 void rbPath(rbNode* node) {
 	if (node == NULL) {
 		return;
@@ -514,7 +621,9 @@ void rbPath(rbNode* node) {
 	s.pop();
 
 }
-
+/**
+ * @brief return height of given red black node
+ */
 int rbNodeHeight(rbNode *n) {
 	int a, b;
 	if (n == NULL) {
@@ -531,13 +640,27 @@ int rbNodeHeight(rbNode *n) {
 		}
 	}
 }
+/**
+ * @brief return balance factor of given red black node
+ */
 int RbgetBalance(rbNode *N)
 {
 	if (N == NULL)
 		return 0;
 	return rbNodeHeight(N->left) - rbNodeHeight(N->right);
 }
-
+/**
+ * @brief return 1 if given node is leaf
+ */
+int isRbLeaf(rbNode *n) {
+	if (n->right == NULL && n->left == NULL) {
+		return 1;
+	}
+	return 0;
+}
+/**
+ * @brief print level wise indentent of given red black tree
+ */
 void levelWiseRb(rbNode *node, int tab) {
 	if (node == NULL) {
 		return ;
@@ -557,12 +680,25 @@ void levelWiseRb(rbNode *node, int tab) {
 	else {
 		c = 'b';
 	}
-	cout << node->data << "[" << a << "]" << "[" << c << "]" << endl;
+	if (isRbLeaf(node) == 1) {
+		cout << node->data << "[" << c << "]" << endl;
+	}
+	else {
+		cout << node->data << "[" << a << "]" << "[" << c << "]" << endl;
+	}
+
 	levelWiseRb(node->left, tab + 1);
 	levelWiseRb(node->right, tab + 1);
 }
-
+/**
+ * @brief main method for executing the programme
+ */
 int main() {
+
+	clock_t start, end;
+	double cpu_time_used;
+
+	start = clock();
 
 	bstNode* bstHead = NULL;
 	avlNode* avlHead = NULL;
@@ -677,5 +813,8 @@ int main() {
 	}
 
 
+	end = clock();
+	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+	printf("cpu time used is %f\n", cpu_time_used);
 	return 0;
 }
