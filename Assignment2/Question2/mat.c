@@ -273,7 +273,7 @@ int main()
     double cpu_time_used;
 
     start = clock();
-    char *filename = "input1.txt";
+    char *filename = "tc1.txt";
 
     FILE *f = fopen(filename, "r");
     int temp;

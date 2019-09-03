@@ -12,9 +12,7 @@ public:
 
 };
 llNode* root = NULL;
-/**
- * @brief create new node of linked list
- */
+
 llNode* newNode(int key) {
 	llNode* node = new llNode();
 
@@ -22,9 +20,6 @@ llNode* newNode(int key) {
 	node->next = NULL;
 	return node;
 }
-/**
- * @brief push new node in linked list
- */
 void push(int key) {
 	llNode* node = NULL;
 	llNode* temp = NULL;
@@ -45,9 +40,6 @@ void push(int key) {
 
 	}
 }
-/**
- * @brief pop a node from linked list
- */
 void pop() {
 	llNode* temp = root;
 	if (root == NULL) {
@@ -59,9 +51,7 @@ void pop() {
 	}
 
 }
-/**
- * @brief modify linked list for new i
- */
+
 void makeNext(int x) {
 	llNode* temp = root;
 	if (root == NULL) {
@@ -72,9 +62,6 @@ void makeNext(int x) {
 		temp = temp->next;
 	}
 }
-/**
- * @brief print triple from root to one leaf
- */
 void printTriplet(int initial) {
 	llNode* temp = root;
 	if (root == NULL) {
@@ -95,9 +82,6 @@ void printTriplet(int initial) {
 	}
 
 }
-/**
- * @brief print the linked list
- */
 void printll() {
 	llNode* temp = root;
 	while (temp != NULL) {
@@ -107,9 +91,6 @@ void printll() {
 	cout << endl;
 
 }
-/**
- * @brief main method for executing programme
- */
 int main() {
 	clock_t start, end;
 	double cpu_time_used;

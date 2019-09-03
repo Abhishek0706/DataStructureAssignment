@@ -62,7 +62,7 @@ void extend(char *input)
 {
 
 	int size = getsize(input);
-	char *end = "\0";
+	const char *end = "\0";
 	strcpy(&input[size - 1], end);
 	size = getsize(input);
 	int extra = (n - (size % n)) % n;
