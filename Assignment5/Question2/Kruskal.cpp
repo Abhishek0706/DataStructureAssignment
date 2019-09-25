@@ -170,45 +170,51 @@ void _union(char s, char d)
 	}
 	int index = 0;
 	char f = find(s);
-	while(array[index]->name!=f){
+	while (array[index]->name != f)
+	{
 		index++;
 	}
 	array[index]->parent = find(d);
 }
 
-void join(){
-
+void join()
+{
+	int sum = 0;
+	;
 	fstream file;
 	file.open("graph.dot");
-	file<< "graph{"<<endl;
+	file << "graph{" << endl;
 
 	//find karo same ho to join mat karna aur same ni ho to union kar dena
-	Edge* temp = head;
-	while(temp!=NULL){
-		if(find(temp->src)!=find(temp->dest)){
-			_union(temp->src,temp->dest);
-			cout<<temp->src<<" \t"<<temp->dest<<" \t"<<temp->weight<<endl;
-			file<<temp->src<<" -- "<<temp->dest<<"[label=\""<<temp->weight<<"\",weight=\""<<temp->weight<<"\"];"<<endl;
+	Edge *temp = head;
+	while (temp != NULL)
+	{
+		if (find(temp->src) != find(temp->dest))
+		{
+			_union(temp->src, temp->dest);
+			sum += temp->weight;
+			cout << temp->src << " \t" << temp->dest << " \t" << temp->weight << endl;
+			file << temp->src << " -- " << temp->dest << "[label=\"" << temp->weight << "\",weight=\"" << temp->weight << "\"];" << endl;
 		}
-
 
 		temp = temp->next;
 	}
-	file<< "}"<<endl;
+	file << "}" << endl;
 	file.close();
-
+	cout << "sum :" << sum << endl;
 }
 
 int main()
-{	system("touch graph.dot");
+{
+	system("touch graph.dot");
 	array = (Vertex **)malloc(1 * sizeof(Vertex *));
 	readData();
-	cout<<"Node1\tNode2\tWeight"<<endl;
+	cout << "Node1\tNode2\tWeight" << endl;
 	join();
 
 	system("dot -Tpng graph.dot > graph.png");
 	system("dot -Tpdf graph.dot -o graph.pdf");
-	
+
 	// insert('A','B',4);
 	// insert('A','C',4);
 	// insert('B','C',2);
@@ -221,8 +227,6 @@ int main()
 	// cout<<array[1]->parent<<endl;
 
 	// cout<<find('D');
-
-	
 
 	return 0;
 }

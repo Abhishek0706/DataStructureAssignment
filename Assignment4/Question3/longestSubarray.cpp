@@ -1,56 +1,48 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <bits/stdc++.h>
+#include <iostream>
+#include <unordered_map>
+
 using namespace std;
 
+
 /**
- * @brief find the length of the subarray
- */
-int findLength(int arr[],
-                    int N,
-                    int n)
-{
-
-    unordered_map<int, int> h;
-    int sum = 0, max = 0;
-
-    for (int i = 0; i < N; i++)
-    {
-
-        sum += arr[i];
-
-        if (sum == n)
-            max = i + 1;
-
-        if (h.find(sum) == h.end())
-            h[sum] = i;
-
-        if (h.find(sum - n) != h.end())
-        {
-
-            if (max < (i - h[sum - n]))
-                max = i - h[sum - n];
-        }
-    }
-
-    return max;
-}
-/**
- * @brief main method for driving the code
+ * @brief This main method takes in array, makes a hashtable for storing the cumulative sum and then find the longest subarray with given sum
+ *
+ * @return 0
  */
 int main()
-{
-	cout <<"N = ";
-	int N;
-	cin>>N;
-	int arr[N];
-	for(int i=0;i<N;i++){
-		cin>>arr[i];
-	}
-	cout<<"n = ";
-	int n;
-	cin>>n;
-	cout<<findLength(arr,N,n)<<endl;
+{   cout<<"N : ";
+    int N;
+    cin>>N;
+    
+    int a[N];
+    int sum=0;
+    unordered_map<int, int> collect;
+    for (int i = 0; i < N; i++){
+        cin>>a[i];
+        sum+=a[i];
+        collect[sum] = i;
+    }
+    cout<<"n : ";
+    int n;
+    cin>>n;
+    int index_i, index_j, length=0;
+    sum = 0;
 
+    for(int i=0; i<N; i++){
+        if(!(collect.find(sum+n) == collect.end())){
+            if((collect[sum+n]-i+1)>length){
+                length = collect[sum+n]-i+1;
+                index_i = i;
+                index_j = collect[sum+n];
+            }
+        }
+        sum+=a[i];
+    }
+
+    if(!length==0)
+        cout<<length<<"\nIndex from "<<index_i<<" to "<<index_j<<endl;
+    else
+        cout<<"Not Found"<<endl;
+        
     return 0;
 }
