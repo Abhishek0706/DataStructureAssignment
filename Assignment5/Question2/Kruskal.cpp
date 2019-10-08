@@ -180,7 +180,6 @@ void _union(char s, char d)
 void join()
 {
 	int sum = 0;
-	;
 	fstream file;
 	file.open("graph.dot");
 	file << "graph{" << endl;
@@ -215,18 +214,6 @@ int main()
 	system("dot -Tpng graph.dot > graph.png");
 	system("dot -Tpdf graph.dot -o graph.pdf");
 
-	// insert('A','B',4);
-	// insert('A','C',4);
-	// insert('B','C',2);
-	// insert('C','D',3);
-
-	// cout << head->src << " " << head->dest << " " << head->weight << endl;
-
-	// insertVertex('A');
-	// insertVertex('A');
-	// cout<<array[1]->parent<<endl;
-
-	// cout<<find('D');
 
 	return 0;
 }

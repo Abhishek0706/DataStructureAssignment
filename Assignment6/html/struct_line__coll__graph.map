@@ -1,0 +1,4 @@
+<map id="Line" name="Line">
+<area shape="rect" id="node1" title="struct for a line in a graph" alt="" coords="8,109,55,136"/>
+<area shape="rect" id="node2" href="$struct_point.html" title="strict for a point in a graph" alt="" coords="5,5,57,32"/>
+</map>
