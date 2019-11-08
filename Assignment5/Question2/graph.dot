@@ -1,7 +1,8 @@
 graph{
-C -- F[label="2",weight="2"];
-B -- C[label="2",weight="2"];
-F -- E[label="3",weight="3"];
-D -- E[label="3",weight="3"];
-A -- C[label="4",weight="4"];
+C -- E[label="5",weight="5"];
+A -- D[label="5",weight="5"];
+D -- F[label="6",weight="6"];
+B -- E[label="7",weight="7"];
+A -- B[label="7",weight="7"];
+G -- E[label="9",weight="9"];
 }
